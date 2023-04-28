@@ -1,0 +1,128 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  background-color: cadetblue;
+  font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .weekdays {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    gap: 2%;
+
+  }
+  
+  .weekday {
+    width: 140px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 4px;
+    color: #555;
+    background-color: #fff;
+    border: 2px solid #f1f1f1;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+.work{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.work button{
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  
+}
+
+.work button i{
+  font-size: 2rem;
+  
+}
+
+.header{
+  width: 30%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-inline: auto;
+  padding: 10px 1rem;
+  color: #555;
+  border-radius: 5px;
+  background-color: #fff;
+  border: 2px solid #f1f1f1;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.delete-button {
+  float: right;
+  border: none;
+}
+
+.delete-button i {
+  font-size: 1.5rem;
+  color: red;
+  cursor: pointer;
+}
+
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
+/* DAYS INFO */
+
+
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 472px;
+}
+
+
+.card h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.status {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+#checkmark-count, #xmark-count {
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 10px;
+  text-align: center;
+}
+
+#checkmark-count {
+  color: green;
+}
+
+#xmark-count {
+  color: red;
+}

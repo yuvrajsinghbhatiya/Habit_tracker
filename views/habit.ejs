@@ -1,0 +1,54 @@
+ <!-- link to the habit.css file -->
+<link rel="stylesheet" href="/css/habit.css">
+
+
+<!-- title for page -->
+<br>
+<center>
+ <h1 class="title"> HABIT TRACKER</h1>
+</center>
+<br>
+
+
+<!-- form to add new habit -->
+
+<center>
+<div class="habits-container">
+  <form action="/savehabit" method="post">
+    <label for="habit-input">Add Habbits</label>
+    <input type="text" id="habit-input" name="name" placeholder="Enter habit...">
+    <button type="submit">Submit</button>
+  </form>
+</div>
+</center>
+<br>
+
+
+<!-- form to show newly added habit -->
+
+<center>
+  <% if (habits.length > 0) { %>
+    <div class="allhabits">
+      <h2>
+        <span class="badge">HABITS</span>
+      </h2>
+      <div class="habitlist">
+        <% habits.forEach(function(habit) { %>
+          <form action="/viewhabit" method="post">
+            <input type="hidden" name="id" value="<%= habit.id %>">
+            <button href="/viewhabit" class="lista"> 
+              <span>📄</span>
+              <span><%= habit.name.substring(0,22) %>..</span>
+            </button>
+          </form>
+        <% }) %>
+      </div>
+    </div>
+  <% } %>
+  
+  </center>
+
+
+  
+
+

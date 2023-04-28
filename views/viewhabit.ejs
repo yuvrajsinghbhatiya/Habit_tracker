@@ -1,0 +1,162 @@
+<!-- link css -->
+<link rel="stylesheet" href="/css/viewhabit.css">
+
+<!-- link fontawesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!-- Back button -->
+<h3 style="margin-left: 2%; margin-top: 2%;"><a style="font-size: 1.5rem; text-decoration: none; color: black;" href="/" >Back</a></h3>
+
+
+<!-- Habit name show using habit id -->
+<br>
+<center>
+  <div class="header">
+    <h1>HABIT-</h1>
+    <h2><%= habit.name %></h2>
+    <form action="/deletehabit" method="post">
+      <input type="hidden" name="id" value="<%= habit.id %>">
+      <button class="delete-button" type="submit"><i class="fa-solid fa-trash"></i></button>
+    </form>
+  </div>
+</center>
+
+
+<br><br><hr><br><br>
+
+<!-- Habit tracker for 7 days -->
+
+<div class="weekdays">
+  <div class="weekday">
+    <h3>Monday</h3>
+    <h3>03/04/2023</h3>
+    <div class="work">
+      <button class="check"><i class="fa-solid fa-circle-check"></i></button>
+      <button class="uncheck"><i class="fa-solid fa-circle-xmark"></i></button>
+    </div>
+  </div>
+  <div class="weekday">
+    <h3>Tuesday</h3>
+    <h3>03/04/2023</h3>
+    <div class="work">
+      <button class="check"><i class="fa-solid fa-circle-check"></i></button>
+      <button class="uncheck"><i class="fa-solid fa-circle-xmark"></i></button>
+    </div>
+  </div>
+  <div class="weekday">
+    <h3>Wednesday</h3>
+    <h3>03/04/2023</h3>
+    <div class="work">
+      <button class="check"><i class="fa-solid fa-circle-check"></i></button>
+      <button class="uncheck"><i class="fa-solid fa-circle-xmark"></i></button>
+    </div>
+  </div>
+  <div class="weekday">
+    <h3>Thursday</h3>
+    <h3>03/04/2023</h3>
+    <div class="work">
+      <button class="check"><i class="fa-solid fa-circle-check"></i></button>
+      <button class="uncheck"><i class="fa-solid fa-circle-xmark"></i></button>
+    </div>
+  </div>
+  <div class="weekday">
+    <h3>Friday</h3>
+    <h3>03/04/2023</h3>
+    <div class="work">
+      <button class="check"><i class="fa-solid fa-circle-check"></i></button>
+      <button class="uncheck"><i class="fa-solid fa-circle-xmark"></i></button>
+    </div>
+  </div>
+  <div class="weekday">
+    <h3>Saturday</h3>
+    <h3>03/04/2023</h3>
+    <div class="work">
+      <button class="check"><i class="fa-solid fa-circle-check"></i></button>
+      <button class="uncheck"><i class="fa-solid fa-circle-xmark"></i></button>
+    </div>
+  </div>
+  <div class="weekday">
+    <h3>Sunday</h3>
+    <h3>03/04/2023</h3>
+    <div class="work">
+      <button class="check"><i class="fa-solid fa-circle-check"></i></button>
+      <button class="uncheck"><i class="fa-solid fa-circle-xmark"></i></button>
+    </div>
+  </div>
+</div>
+
+<br><br><hr><br><br>
+
+<!-- Habit info for the workdone -->
+<center>
+  <div class="card">
+    <h2>7-Day HABIT INFO</h2>
+    <div class="status">
+      <p id="checkmark-count">You have completed habit 0 out of 7 days.</p>
+      <p id="xmark-count">You have not completed habit 0 out of 7 days.</p>
+    </div>
+  </div>
+</center>
+
+
+<!-- script for the habit tracker info -->
+
+<script>
+  // get all checkmark and xmark buttons
+ const checkmarks = document.querySelectorAll('.fa-circle-check');
+ const xmarks = document.querySelectorAll('.fa-circle-xmark');
+ 
+ // initialize counters
+ let checkmarkCount = 0;
+ let xmarkCount = 0;
+ 
+ // add click event listener to each checkmark button
+ checkmarks.forEach(checkmark => {
+   checkmark.addEventListener('click', () => {
+     handleCellClick(checkmark, true);
+   });
+ });
+ 
+ // add click event listener to each xmark button
+ xmarks.forEach(xmark => {
+   xmark.addEventListener('click', () => {
+     handleCellClick(xmark, false);
+   });
+ });
+ 
+ // function to handle cell clicks
+ function handleCellClick(button, isCheckmark) {
+   if (isCheckmark) {
+     if (!button.classList.contains('green') && !button.classList.contains('red')) { // check if button is not already clicked
+       button.classList.add('green'); // add green color
+       checkmarkCount++; // increment checkmark counter
+       updateCount(); // update count display
+     } else if (button.classList.contains('green')) {
+       button.classList.remove('green'); // remove green color to revert to default
+       checkmarkCount--; // decrement checkmark counter
+       updateCount(); // update count display
+     }
+   } else {
+     if (!button.classList.contains('green') && !button.classList.contains('red')) { // check if button is not already clicked
+       button.classList.add('red'); // add red color
+       xmarkCount++; // increment xmark counter
+       updateCount(); // update count display
+     } else if (button.classList.contains('red')) {
+       button.classList.remove('red'); // remove red color to revert to default
+       xmarkCount--; // decrement xmark counter
+       updateCount(); // update count display
+     }
+   }
+ }
+ 
+ // function to update count display
+ function updateCount() {
+   const checkmarkCountDisplay = document.getElementById('checkmark-count');
+   const xmarkCountDisplay = document.getElementById('xmark-count');
+   checkmarkCountDisplay.innerHTML = `You have completed habit ${checkmarkCount} out of 7 days.`;
+   xmarkCountDisplay.innerHTML = `You have not completed habit ${xmarkCount} out of 7 days.`;
+ }
+ 
+ 
+ </script>
+
